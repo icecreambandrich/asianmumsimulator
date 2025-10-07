@@ -19,14 +19,14 @@ export interface Pose {
   }
 }
 
-// Base idle pose
+// Base idle pose - scaled up for better visibility
 export const IDLE_POSE: Pose = {
   head: {
-    position: new Vector3(0, 1.6, 0),
+    position: new Vector3(0, 2.2, 0),
     rotation: new Euler(0, 0, 0)
   },
   torso: {
-    position: new Vector3(0, 0.8, 0),
+    position: new Vector3(0, 1.0, 0),
     rotation: new Euler(0, 0, 0)
   },
   leftArm: {

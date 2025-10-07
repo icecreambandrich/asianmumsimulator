@@ -174,7 +174,7 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
               {/* 3D Canvas */}
               <div className="aspect-square relative">
                 <Canvas
-                  camera={{ fov: 35, position: [0, 1.5, 5] }}
+                  camera={{ fov: 45, position: [0, 2, 6] }}
                   shadows
                   gl={{
                     antialias: true,
@@ -199,13 +199,14 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
                       onWeaponClick={() => console.log('Weapon clicked!')}
                     />
                     
-                    {/* Ground shadows */}
+                    {/* Enhanced ground shadows for better 3D effect */}
                     <ContactShadows 
-                      opacity={0.5} 
-                      scale={3} 
-                      blur={3} 
-                      far={2} 
-                      resolution={quality === 'high' ? 1024 : 512}
+                      opacity={0.8} 
+                      scale={5} 
+                      blur={2} 
+                      far={3} 
+                      resolution={quality === 'high' ? 2048 : 1024}
+                      position={[0, -1.5, 0]}
                     />
                     
                     {/* Camera controls */}

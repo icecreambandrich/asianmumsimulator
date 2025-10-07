@@ -42,9 +42,9 @@ export const Lights: React.FC<LightsProps> = ({ preset, useStage = true }) => {
   // Custom three-point lighting setup
   const lightConfigs = {
     studio: {
-      key: { color: '#FFFFFF', intensity: 2.2, position: [2, 3, 2] as [number, number, number] },
-      fill: { color: '#E6F3FF', intensity: 0.7, position: [-2, 1, 1] as [number, number, number] },
-      rim: { color: '#FFE6CC', intensity: 1.8, position: [-1, 3, -2] as [number, number, number] }
+      key: { color: '#FFFFFF', intensity: 3.5, position: [3, 4, 3] as [number, number, number] },
+      fill: { color: '#E6F3FF', intensity: 1.2, position: [-3, 2, 2] as [number, number, number] },
+      rim: { color: '#FFE6CC', intensity: 2.5, position: [-2, 4, -3] as [number, number, number] }
     },
     warm: {
       key: { color: '#FFE4B5', intensity: 1.8, position: [2, 3, 2] as [number, number, number] },
@@ -62,8 +62,8 @@ export const Lights: React.FC<LightsProps> = ({ preset, useStage = true }) => {
 
   return (
     <>
-      {/* Ambient light for overall illumination */}
-      <ambientLight intensity={0.3} color="#F5F5F5" />
+      {/* Enhanced ambient light for better 3D visibility */}
+      <ambientLight intensity={0.6} color="#F5F5F5" />
       
       {/* Key light (main light source) */}
       <directionalLight

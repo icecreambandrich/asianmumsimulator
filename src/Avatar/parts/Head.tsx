@@ -26,7 +26,7 @@ export const Head: React.FC<HeadProps> = ({
 
   // Head geometry with higher detail for smooth curves
   const headGeometry = useMemo(() => {
-    return new SphereGeometry(0.35, 32, 32)
+    return new SphereGeometry(0.45, 64, 64) // Larger and more detailed
   }, [])
 
   // Eye geometry

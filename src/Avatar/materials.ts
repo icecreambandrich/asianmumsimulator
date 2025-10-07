@@ -34,15 +34,19 @@ export const COLORS = {
 export const createSkinMaterial = (variant: keyof typeof COLORS.skin) => {
   return new MeshPhysicalMaterial({
     color: new Color(COLORS.skin[variant]),
-    roughness: 0.8,
+    roughness: 0.4,
     metalness: 0.0,
-    transmission: 0.05,
-    thickness: 0.1,
-    clearcoat: 0.1,
-    clearcoatRoughness: 0.8,
-    // Subsurface scattering effect
-    sheen: 0.2,
-    sheenColor: new Color('#FFE4E1')
+    transmission: 0.1,
+    thickness: 0.5,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.2,
+    // Enhanced subsurface scattering
+    sheen: 0.8,
+    sheenRoughness: 0.3,
+    sheenColor: new Color('#FFCCCB'),
+    // Add subtle iridescence for realistic skin
+    iridescence: 0.1,
+    iridescenceIOR: 1.3
   })
 }
 

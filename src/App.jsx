@@ -20,7 +20,7 @@ function App() {
     weapon: null
   })
   const [hasWebGL, setHasWebGL] = useState(true)
-  const [use3D, setUse3D] = useState(true)
+  const [use3D, setUse3D] = useState(true) // Start in 3D mode by default
   const [stats, setStats] = useState({
     tigerPoints: 50,
     zenPoints: 50,

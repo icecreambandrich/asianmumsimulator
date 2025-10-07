@@ -16,9 +16,9 @@ export const Torso: React.FC<TorsoProps> = ({
   // Create cloth material
   const clothMaterial = useMemo(() => createClothMaterial(variant), [variant])
 
-  // Torso geometry with rounded edges for toy-like feel
+  // Torso geometry with rounded edges for realistic proportions
   const torsoGeometry = useMemo(() => {
-    return new RoundedBoxGeometry(0.8, 1.0, 0.4, 6, 0.05)
+    return new RoundedBoxGeometry(1.2, 1.4, 0.6, 8, 0.08) // Larger and more detailed
   }, [])
 
   // Breathing scale
