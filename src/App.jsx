@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import StartScreen from './components/StartScreen'
 import CharacterCreation from './components/CharacterCreation'
+import { CharacterCreation3D } from './components/CharacterCreation3D'
+import { detectWebGLSupport } from './utils/webglSupport'
 import GamePlay from './components/GamePlay'
 import EndingScreen from './components/EndingScreen'
 
@@ -8,16 +10,17 @@ const GAME_STATES = {
   START: 'start',
   CHARACTER_CREATION: 'character_creation',
   GAMEPLAY: 'gameplay',
-  ENDING: 'ending'
 }
 
 function App() {
   const [gameState, setGameState] = useState(GAME_STATES.START)
   const [character, setCharacter] = useState({
-    look: '',
-    disciplineStyle: '',
-    weapon: ''
+    look: null,
+    disciplineStyle: null,
+    weapon: null
   })
+  const [hasWebGL, setHasWebGL] = useState(true)
+  const [use3D, setUse3D] = useState(true)
   const [stats, setStats] = useState({
     tigerPoints: 50,
     zenPoints: 50,
@@ -26,6 +29,15 @@ function App() {
   })
   const [currentRound, setCurrentRound] = useState(0)
   const [gameHistory, setGameHistory] = useState([])
+
+  // Check WebGL support on component mount
+  useEffect(() => {
+    const webglSupported = detectWebGLSupport()
+    setHasWebGL(webglSupported)
+    if (!webglSupported) {
+      setUse3D(false)
+    }
+  }, [])
 
   const updateStats = (changes) => {
     setStats(prevStats => {
@@ -86,11 +98,34 @@ function App() {
       )}
       
       {gameState === GAME_STATES.CHARACTER_CREATION && (
-        <CharacterCreation 
-          character={character}
-          setCharacter={setCharacter}
-          onComplete={() => setGameState(GAME_STATES.GAMEPLAY)}
-        />
+        <>
+          {/* 3D Toggle Button */}
+          {hasWebGL && (
+            <div className="fixed top-4 right-4 z-50">
+              <button
+                onClick={() => setUse3D(!use3D)}
+                className="bg-tiger-red text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600 transition-colors"
+              >
+                {use3D ? '2D View' : '3D View'}
+              </button>
+            </div>
+          )}
+          
+          {/* Character Creation Component */}
+          {use3D && hasWebGL ? (
+            <CharacterCreation3D 
+              character={character}
+              setCharacter={setCharacter}
+              onComplete={() => setGameState(GAME_STATES.GAMEPLAY)}
+            />
+          ) : (
+            <CharacterCreation 
+              character={character}
+              setCharacter={setCharacter}
+              onComplete={() => setGameState(GAME_STATES.GAMEPLAY)}
+            />
+          )}
+        </>
       )}
       
       {gameState === GAME_STATES.GAMEPLAY && (

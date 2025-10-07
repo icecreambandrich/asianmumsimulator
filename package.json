@@ -4,7 +4,14 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A hilarious story-driven web game where you create your own Asian Mum character and navigate parenting scenarios",
-  "keywords": ["game", "react", "asian-mum", "parenting", "simulator", "comedy"],
+  "keywords": [
+    "game",
+    "react",
+    "asian-mum",
+    "parenting",
+    "simulator",
+    "comedy"
+  ],
   "author": "Joshua Lee",
   "license": "MIT",
   "homepage": "https://github.com/icecreambandrich/asianmumsimulator",
@@ -20,8 +27,13 @@
     "start": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "@types/three": "^0.180.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
