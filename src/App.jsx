@@ -80,7 +80,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-gray-100 to-blue-100">
       {gameState === GAME_STATES.START && (
         <StartScreen onStart={() => setGameState(GAME_STATES.CHARACTER_CREATION)} />
       )}
