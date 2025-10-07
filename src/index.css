@@ -126,21 +126,33 @@
     position: relative;
   }
 
-  /* Head Styles */
+  /* Head Styles - Higher Definition */
   .character-head {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     position: relative;
-    margin-bottom: 5px;
-    background: #D2B48C; /* Default skin tone */
-    border: 2px solid #8B4513;
+    margin-bottom: 8px;
+    background: radial-gradient(circle at 30% 30%, #F5DEB3, #DEB887, #D2B48C);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    box-shadow: 
+      0 4px 8px rgba(0,0,0,0.2),
+      inset 0 2px 4px rgba(255,255,255,0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.1);
   }
 
-  .head-classic { background: #DEB887; }
-  .head-corporate { background: #F5DEB3; }
-  .head-insta { background: #FFDAB9; }
-  .head-grandma { background: #D2B48C; }
+  .head-classic { 
+    background: radial-gradient(circle at 30% 30%, #F5DEB3, #DEB887, #CD853F);
+  }
+  .head-corporate { 
+    background: radial-gradient(circle at 30% 30%, #FFEFD5, #F5DEB3, #DEB887);
+  }
+  .head-insta { 
+    background: radial-gradient(circle at 30% 30%, #FFDAB9, #FFCCCB, #F0E68C);
+  }
+  .head-grandma { 
+    background: radial-gradient(circle at 30% 30%, #E6E6FA, #D2B48C, #BC8F8F);
+  }
 
   .face {
     position: absolute;
@@ -150,152 +162,256 @@
 
   .eyes {
     position: absolute;
-    top: 20px;
+    top: 28px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 12px;
   }
 
   .eye {
-    width: 8px;
-    height: 8px;
-    background: #000;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #FFF, #E6E6FA, #4169E1);
     border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 
+      inset 0 1px 2px rgba(255,255,255,0.8),
+      inset 0 -1px 1px rgba(0,0,0,0.1),
+      0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  .eye::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #000, #333);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .nose {
     position: absolute;
-    top: 30px;
+    top: 42px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 6px;
-    background: #8B4513;
-    border-radius: 2px;
+    width: 6px;
+    height: 8px;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(160, 82, 45, 0.5));
+    border-radius: 3px;
+    box-shadow: 
+      0 1px 2px rgba(0,0,0,0.1),
+      inset 0 1px 1px rgba(255,255,255,0.2);
   }
 
   .mouth {
     position: absolute;
-    top: 40px;
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
-    width: 12px;
-    height: 4px;
-    background: #8B4513;
-    border-radius: 2px;
+    width: 16px;
+    height: 6px;
+    background: linear-gradient(180deg, #CD5C5C, #8B0000);
+    border-radius: 8px;
+    box-shadow: 
+      0 1px 2px rgba(0,0,0,0.2),
+      inset 0 1px 1px rgba(255,255,255,0.3);
   }
 
-  /* Hair Styles */
+  /* Hair Styles - Higher Definition */
   .hair {
     position: absolute;
-    top: -10px;
-    left: -5px;
-    width: 70px;
-    height: 40px;
-    border-radius: 50% 50% 0 0;
+    top: -15px;
+    left: -10px;
+    width: 100px;
+    height: 50px;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.2);
   }
 
-  .hair-classic { background: #2F4F4F; } /* Dark gray */
-  .hair-corporate { background: #8B4513; } /* Brown */
-  .hair-insta { background: #DAA520; } /* Golden */
-  .hair-grandma { background: #C0C0C0; } /* Silver */
-  .hair-default { background: #654321; } /* Dark brown */
+  .hair-classic { 
+    background: linear-gradient(135deg, #2F4F4F, #1C1C1C, #2F4F4F);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.1);
+  }
+  .hair-corporate { 
+    background: linear-gradient(135deg, #8B4513, #654321, #A0522D);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.2);
+  }
+  .hair-insta { 
+    background: linear-gradient(135deg, #DAA520, #FFD700, #B8860B);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.3);
+  }
+  .hair-grandma { 
+    background: linear-gradient(135deg, #C0C0C0, #DCDCDC, #A9A9A9);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.4);
+  }
+  .hair-default { 
+    background: linear-gradient(135deg, #654321, #8B4513, #4A4A4A);
+  }
 
-  /* Body Styles */
+  /* Body Styles - Higher Definition */
   .character-body {
-    width: 80px;
-    height: 100px;
+    width: 100px;
+    height: 120px;
     position: relative;
-    margin-bottom: 5px;
-    border-radius: 20px 20px 10px 10px;
+    margin-bottom: 8px;
+    border-radius: 25px 25px 15px 15px;
+    box-shadow: 
+      0 4px 8px rgba(0,0,0,0.2),
+      inset 0 2px 4px rgba(255,255,255,0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.1);
   }
 
-  .body-classic { background: #FF6347; } /* Traditional red */
-  .body-corporate { background: #4169E1; } /* Business blue */
-  .body-insta { background: #FF69B4; } /* Pink trendy */
-  .body-grandma { background: #9370DB; } /* Purple cardigan */
-  .body-default { background: #87CEEB; } /* Light blue */
+  .body-classic { 
+    background: linear-gradient(135deg, #FF6347, #DC143C, #B22222);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+  }
+  .body-corporate { 
+    background: linear-gradient(135deg, #4169E1, #1E90FF, #0000CD);
+    border: 1px solid rgba(65, 105, 225, 0.3);
+  }
+  .body-insta { 
+    background: linear-gradient(135deg, #FF69B4, #FF1493, #C71585);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+  }
+  .body-grandma { 
+    background: linear-gradient(135deg, #9370DB, #8A2BE2, #6A0DAD);
+    border: 1px solid rgba(147, 112, 219, 0.3);
+  }
+  .body-default { 
+    background: linear-gradient(135deg, #87CEEB, #4682B4, #5F9EA0);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+  }
 
   .arm {
     position: absolute;
-    width: 20px;
-    height: 60px;
-    border-radius: 10px;
-    top: 10px;
+    width: 25px;
+    height: 75px;
+    border-radius: 12px;
+    top: 15px;
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.2),
+      inset 0 1px 2px rgba(255,255,255,0.3);
   }
 
   .left-arm {
-    left: -15px;
+    left: -20px;
     background: inherit;
-    transform: rotate(-20deg);
+    transform: rotate(-25deg);
+    border: 1px solid rgba(0,0,0,0.1);
   }
 
   .right-arm {
-    right: -15px;
+    right: -20px;
     background: inherit;
-    transform: rotate(20deg);
+    transform: rotate(25deg);
+    border: 1px solid rgba(0,0,0,0.1);
   }
 
-  /* Legs Styles */
+  /* Legs Styles - Higher Definition */
   .character-legs {
-    width: 60px;
-    height: 80px;
+    width: 80px;
+    height: 100px;
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .leg {
     position: absolute;
-    width: 25px;
-    height: 80px;
-    border-radius: 12px;
+    width: 32px;
+    height: 100px;
+    border-radius: 16px;
     top: 0;
+    box-shadow: 
+      0 3px 6px rgba(0,0,0,0.2),
+      inset 0 1px 2px rgba(255,255,255,0.2),
+      inset 0 -1px 2px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
   }
 
   .left-leg {
-    left: 5px;
+    left: 8px;
   }
 
   .right-leg {
-    right: 5px;
+    right: 8px;
   }
 
-  .legs-classic { }
-  .legs-classic .leg { background: #2F4F4F; } /* Dark pants */
-  .legs-corporate .leg { background: #000080; } /* Navy pants */
-  .legs-insta .leg { background: #4169E1; } /* Blue jeans */
-  .legs-grandma .leg { background: #8B4513; } /* Brown pants */
-  .legs-default .leg { background: #696969; } /* Gray pants */
+  .legs-classic .leg { 
+    background: linear-gradient(135deg, #2F4F4F, #1C1C1C, #2F4F4F);
+  }
+  .legs-corporate .leg { 
+    background: linear-gradient(135deg, #000080, #191970, #4169E1);
+  }
+  .legs-insta .leg { 
+    background: linear-gradient(135deg, #4169E1, #1E90FF, #6495ED);
+  }
+  .legs-grandma .leg { 
+    background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
+  }
+  .legs-default .leg { 
+    background: linear-gradient(135deg, #696969, #808080, #A9A9A9);
+  }
 
-  /* Feet Styles */
+  /* Feet Styles - Higher Definition */
   .character-feet {
-    width: 80px;
-    height: 20px;
+    width: 100px;
+    height: 25px;
     position: relative;
   }
 
   .foot {
     position: absolute;
-    width: 30px;
-    height: 15px;
-    border-radius: 15px 5px 5px 15px;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px 8px 8px 20px;
     bottom: 0;
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.2);
+    border: 1px solid rgba(0,0,0,0.2);
   }
 
   .left-foot {
-    left: 0;
+    left: 5px;
   }
 
   .right-foot {
-    right: 0;
+    right: 5px;
   }
 
-  .feet-classic .foot { background: #8B4513; } /* Brown shoes */
-  .feet-corporate .foot { background: #000; } /* Black heels */
-  .feet-insta .foot { background: #FF1493; } /* Pink sneakers */
-  .feet-grandma .foot { background: #A0522D; } /* Brown slippers */
-  .feet-default .foot { background: #654321; } /* Default brown */
+  .feet-classic .foot { 
+    background: linear-gradient(135deg, #8B4513, #A0522D, #654321);
+  }
+  .feet-corporate .foot { 
+    background: linear-gradient(135deg, #000, #333, #000);
+    box-shadow: 
+      0 2px 4px rgba(0,0,0,0.4),
+      inset 0 1px 2px rgba(255,255,255,0.1);
+  }
+  .feet-insta .foot { 
+    background: linear-gradient(135deg, #FF1493, #FF69B4, #C71585);
+  }
+  .feet-grandma .foot { 
+    background: linear-gradient(135deg, #A0522D, #CD853F, #8B4513);
+  }
+  .feet-default .foot { 
+    background: linear-gradient(135deg, #654321, #8B4513, #A0522D);
+  }
 
   /* LED Marquee Animation */
   @keyframes led-scroll {
