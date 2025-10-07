@@ -149,7 +149,7 @@ const CharacterCreation = ({ character, setCharacter, onComplete }) => {
                     {/* 3D Character Representation */}
                     <div className="relative">
                       {/* 3D Character Figure */}
-                      <div className="character-figure relative" style={{ height: '400px' }}>
+                      <div className="character-figure relative" style={{ height: '500px' }}>
                         
                         {/* Head */}
                         <div className={`character-head ${getHeadStyle(character.look)}`}>
