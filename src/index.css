@@ -30,4 +30,63 @@
   .stat-fill {
     @apply h-full rounded-full transition-all duration-500 ease-out;
   }
+
+  /* 3D Character Components */
+  .character-3d-container {
+    perspective: 1000px;
+    perspective-origin: center center;
+  }
+  
+  .character-3d-figure {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+  }
+  
+  .character-3d-container:hover .character-3d-figure {
+    transform: rotateX(15deg) rotateY(10deg) scale(1.05);
+  }
+  
+  /* 3D Hover Effects */
+  .character-3d-figure > div {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .character-3d-container:hover .character-3d-figure > div:nth-child(2) > div:first-child {
+    transform: translateZ(40px) scale(1.1);
+  }
+  
+  .character-3d-container:hover .character-3d-figure > div:nth-child(2) > div:nth-child(2) {
+    transform: translateZ(50px) rotateY(20deg) rotate(10deg);
+  }
+
+  /* Floating Animation for 3D Elements */
+  @keyframes float-3d {
+    0%, 100% { 
+      transform: translateY(0px) rotateX(10deg) rotateY(-5deg);
+    }
+    50% { 
+      transform: translateY(-10px) rotateX(15deg) rotateY(5deg);
+    }
+  }
+  
+  .character-3d-figure {
+    animation: float-3d 4s ease-in-out infinite;
+  }
+
+  /* Glow Effects for Different Discipline Styles */
+  .discipline-glow-silent {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+  
+  .discipline-glow-verbal {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+  }
+  
+  .discipline-glow-lecture {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+  }
+  
+  .discipline-glow-physical {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.5);
+  }
 }
