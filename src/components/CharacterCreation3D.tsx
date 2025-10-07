@@ -7,6 +7,9 @@ import { Avatar, AvatarConfig } from '../Avatar/Avatar'
 import { Lights, LightingPreset } from '../scene/Lights'
 import { PostFX, QualityLevel } from '../scene/PostFX'
 import { useScreenshot } from '../hooks/useScreenshot'
+import { LoadingScreen3D } from './LoadingScreen3D'
+import { PerformanceMonitor } from './PerformanceMonitor'
+import { CHARACTER_PRESETS, getRandomPreset, CharacterPreset } from '../data/characterPresets'
 
 const CHARACTER_OPTIONS = {
   look: [
@@ -44,6 +47,8 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
   const [lightingPreset, setLightingPreset] = useState<LightingPreset>('studio')
   const [hoveredPart, setHoveredPart] = useState<string | null>(null)
   const [isAvatarHovered, setIsAvatarHovered] = useState(false)
+  const [showPresets, setShowPresets] = useState(false)
+  const [selectedPreset, setSelectedPreset] = useState<CharacterPreset | null>(null)
 
   // Screenshot functionality
   const { takeScreenshot } = useScreenshot()
@@ -59,6 +64,28 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
     const filename = `${character.look || 'my'}-asian-mum-${Date.now()}.png`
     takeScreenshot(filename, 2160)
   }, [takeScreenshot, character.look])
+
+  const handlePresetSelect = useCallback((preset: CharacterPreset) => {
+    const config = preset.id === 'random' ? getRandomPreset().config : preset.config
+    
+    setCharacter((prev: any) => ({
+      ...prev,
+      look: config.look,
+      disciplineStyle: config.disciplineStyle,
+      weapon: config.weapon
+    }))
+    
+    setSelectedPreset(preset)
+    setShowPresets(false)
+  }, [setCharacter])
+
+  const handlePerformanceChange = useCallback((fps: number, suggestedQuality: QualityLevel) => {
+    if (fps < 25 && quality !== 'low') {
+      setQuality('low')
+    } else if (fps < 40 && quality === 'high') {
+      setQuality('medium')
+    }
+  }, [quality])
 
   const isComplete = character.look && character.disciplineStyle && character.weapon
 
@@ -127,12 +154,21 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
                   </select>
                 </div>
                 
-                <button
-                  onClick={handleScreenshot}
-                  className="px-4 py-2 bg-tiger-red text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
-                >
-                  📸 Share My Mum
-                </button>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => setShowPresets(!showPresets)}
+                    className="px-4 py-2 bg-tiger-gold text-white rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
+                  >
+                    🎭 Quick Presets
+                  </button>
+                  
+                  <button
+                    onClick={handleScreenshot}
+                    className="px-4 py-2 bg-tiger-red text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
+                  >
+                    📸 Share My Mum
+                  </button>
+                </div>
               </div>
 
               {/* 3D Canvas */}
@@ -188,11 +224,14 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
                     
                     {/* Post-processing effects */}
                     <PostFX quality={quality} enabled={quality !== 'low'} />
+                    
+                    {/* Performance Monitor */}
+                    <PerformanceMonitor onPerformanceChange={handlePerformanceChange} />
                   </Suspense>
                 </Canvas>
                 
                 {/* Loading fallback */}
-                <Suspense fallback={<Loader />} />
+                <Suspense fallback={<LoadingScreen3D />} />
               </div>
             </div>
           </div>
@@ -248,6 +287,54 @@ export const CharacterCreation3D: React.FC<CharacterCreation3DProps> = ({
             </button>
           </div>
         </div>
+
+        {/* Preset Selection Modal */}
+        {showPresets && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-3xl p-8 max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold text-tiger-red">Quick Character Presets</h2>
+                <button
+                  onClick={() => setShowPresets(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {CHARACTER_PRESETS.map((preset) => (
+                  <button
+                    key={preset.id}
+                    onClick={() => handlePresetSelect(preset)}
+                    className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 hover:from-tiger-gold/10 hover:to-tiger-red/10 transition-all duration-300 hover:scale-105 hover:shadow-xl text-left"
+                  >
+                    <div className="text-6xl mb-4 text-center">{preset.emoji}</div>
+                    <h3 className="text-xl font-bold text-tiger-red mb-2">{preset.name}</h3>
+                    <p className="text-gray-600 mb-3">{preset.description}</p>
+                    <div className="text-sm text-gray-500 italic">"{preset.backstory}"</div>
+                    
+                    {/* Preview config */}
+                    <div className="mt-4 flex justify-between text-xs text-gray-400">
+                      <span>{preset.config.look}</span>
+                      <span>{preset.config.disciplineStyle}</span>
+                      <span>{preset.config.weapon}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+              
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => setShowPresets(false)}
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Continue Customizing
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Character Stats Preview */}
         {isComplete && (
