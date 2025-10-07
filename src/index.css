@@ -128,7 +128,7 @@
   }
 
   .led-marquee {
-    animation: led-scroll 30s linear infinite;
+    animation: led-scroll 60s linear infinite;
   }
 
   /* LED Text Glow Effect */
