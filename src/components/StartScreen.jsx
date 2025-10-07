@@ -82,16 +82,55 @@ const StartScreen = ({ onStart }) => {
 
           </div>
 
-          {/* Quote Section */}
+          {/* LED Banner Section */}
           <div className="mb-12">
-            <div className="bg-black/30 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-3xl mx-auto">
-              <p className={`text-2xl md:text-3xl font-medium text-white transition-all duration-500 ${
-                isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-              }`}>
-                <span className="text-yellow-300">"</span>
-                {ROTATING_QUOTES[currentQuote]}
-                <span className="text-yellow-300">"</span>
-              </p>
+            <div className="relative bg-black rounded-3xl p-6 border-4 border-yellow-400 shadow-2xl max-w-5xl mx-auto overflow-hidden">
+              {/* LED Border Effect */}
+              <div className="absolute inset-0 rounded-3xl">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-pulse"></div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-blue-500 via-green-500 via-yellow-500 to-red-500 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute right-0 top-0 w-1 h-full bg-gradient-to-b from-purple-500 via-blue-500 via-green-500 via-yellow-500 to-red-500 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+              </div>
+
+              {/* LED Corner Lights */}
+              <div className="absolute top-2 left-2 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+              <div className="absolute top-2 right-2 w-3 h-3 bg-green-500 rounded-full animate-ping" style={{animationDelay: '0.3s'}}></div>
+              <div className="absolute bottom-2 left-2 w-3 h-3 bg-blue-500 rounded-full animate-ping" style={{animationDelay: '0.6s'}}></div>
+              <div className="absolute bottom-2 right-2 w-3 h-3 bg-yellow-500 rounded-full animate-ping" style={{animationDelay: '0.9s'}}></div>
+
+              {/* Scrolling LED Text */}
+              <div className="relative h-16 flex items-center overflow-hidden">
+                <div className="led-marquee flex items-center whitespace-nowrap">
+                  {/* Create a continuous loop of all quotes */}
+                  {[...ROTATING_QUOTES, ...ROTATING_QUOTES].map((quote, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center text-2xl md:text-3xl font-bold text-yellow-300 mr-16 led-text"
+                      style={{
+                        textShadow: '0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 30px #fbbf24',
+                        fontFamily: 'monospace'
+                      }}
+                    >
+                      <span className="text-red-400 mr-2">●</span>
+                      "{quote}"
+                      <span className="text-red-400 ml-2">●</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* LED Status Indicators */}
+              <div className="absolute top-4 right-4 flex space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+              </div>
+
+              {/* "ON AIR" indicator */}
+              <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded animate-pulse">
+                ON AIR
+              </div>
             </div>
           </div>
 

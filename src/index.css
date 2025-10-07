@@ -116,4 +116,45 @@
     background-size: 200% 200%;
     animation: gradient-shift 6s ease infinite;
   }
+
+  /* LED Marquee Animation */
+  @keyframes led-scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .led-marquee {
+    animation: led-scroll 30s linear infinite;
+  }
+
+  /* LED Text Glow Effect */
+  .led-text {
+    animation: led-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes led-glow {
+    from {
+      text-shadow: 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 30px #fbbf24;
+    }
+    to {
+      text-shadow: 0 0 15px #fbbf24, 0 0 25px #fbbf24, 0 0 35px #fbbf24, 0 0 40px #fbbf24;
+    }
+  }
+
+  /* LED Border Animation */
+  @keyframes led-border-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
