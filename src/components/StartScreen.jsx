@@ -80,12 +80,6 @@ const StartScreen = ({ onStart }) => {
               </h3>
             </div>
 
-            {/* Subtitle Badge */}
-            <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 rounded-full px-8 py-3 mb-8 shadow-2xl transform hover:scale-105 transition-all duration-300">
-              <p className="text-white font-bold text-lg">
-                The Ultimate Parenting Power Trip! 👑
-              </p>
-            </div>
           </div>
 
           {/* Quote Section */}
