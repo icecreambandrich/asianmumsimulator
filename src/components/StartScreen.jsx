@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const ROTATING_QUOTES = [
+  "Day of Discipline 🐅",
   "Discipline builds dynasty! 👑",
   "Why you no study harder? 📚",
   "Other kids already finished homework! 😤",
@@ -75,9 +76,6 @@ const StartScreen = ({ onStart }) => {
                   🐅
                 </div>
               </div>
-              <h3 className="text-2xl md:text-4xl font-semibold text-yellow-300 italic drop-shadow-lg">
-                Day of Discipline
-              </h3>
             </div>
 
           </div>
