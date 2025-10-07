@@ -82,7 +82,7 @@ const StartScreen = ({ onStart }) => {
 
           {/* LED Banner Section */}
           <div className="mb-12">
-            <div className="relative bg-black rounded-3xl p-6 border-4 border-yellow-400 shadow-2xl max-w-5xl mx-auto overflow-hidden">
+            <div className="relative bg-black rounded-3xl p-4 border-4 border-yellow-400 shadow-2xl max-w-5xl mx-auto overflow-hidden">
               {/* LED Border Effect */}
               <div className="absolute inset-0 rounded-3xl">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 animate-pulse"></div>
@@ -98,7 +98,7 @@ const StartScreen = ({ onStart }) => {
               <div className="absolute bottom-2 right-2 w-3 h-3 bg-yellow-500 rounded-full animate-ping" style={{animationDelay: '0.9s'}}></div>
 
               {/* Scrolling LED Text */}
-              <div className="relative h-16 flex items-center overflow-hidden">
+              <div className="relative h-12 flex items-center overflow-hidden">
                 <div className="led-marquee flex items-center whitespace-nowrap">
                   {/* Create a continuous loop of all quotes */}
                   {[...ROTATING_QUOTES, ...ROTATING_QUOTES].map((quote, index) => (
