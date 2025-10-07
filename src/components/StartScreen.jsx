@@ -62,9 +62,9 @@ const StartScreen = ({ onStart }) => {
         <div className="max-w-5xl mx-auto text-center">
           
           {/* Hero Section */}
-          <div className="mb-16">
+          <div className="mb-11">
             {/* Main Title with Gradient Text */}
-            <div className="mb-8">
+            <div className="mb-6">
               <h1 className="text-7xl md:text-9xl font-black mb-4 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent drop-shadow-2xl animate-pulse">
                 ASIAN MUM
               </h1>
