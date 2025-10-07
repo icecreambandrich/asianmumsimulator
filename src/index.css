@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Comic Neue', cursive;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #F59E0B 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .tiger-button {
+    @apply bg-gradient-to-r from-tiger-red to-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95;
+  }
+  
+  .zen-button {
+    @apply bg-gradient-to-r from-zen-blue to-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95;
+  }
+  
+  .mum-card {
+    @apply bg-white rounded-2xl shadow-xl p-6 transform transition-all duration-300 hover:scale-105 border-4 border-tiger-gold;
+  }
+  
+  .stat-bar {
+    @apply w-full bg-gray-200 rounded-full h-4 overflow-hidden;
+  }
+  
+  .stat-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+}
