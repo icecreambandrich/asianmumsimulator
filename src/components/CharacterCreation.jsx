@@ -21,24 +21,34 @@ const CHARACTER_OPTIONS = {
   ]
 }
 
-// Helper functions for body parts
-const getBodyEmoji = (look) => {
+// Helper functions for full person representation
+const getFullPersonEmoji = (look) => {
+  switch(look) {
+    case 'classic': return '👩‍🦳'  // Classic Asian woman
+    case 'corporate': return '👩‍💼'  // Business woman
+    case 'insta': return '🤳'  // Selfie woman
+    case 'grandma': return '👵'  // Grandmother
+    default: return '👤'  // Default person silhouette
+  }
+}
+
+const getOutfitEmoji = (look) => {
   switch(look) {
     case 'classic': return '👗'  // Traditional dress
-    case 'corporate': return '👔'  // Business attire
-    case 'insta': return '👚'  // Trendy top
-    case 'grandma': return '🧥'  // Cardigan
+    case 'corporate': return '💼'  // Briefcase for corporate
+    case 'insta': return '📱'  // Phone for social media
+    case 'grandma': return '🧶'  // Knitting for grandma
     default: return '👕'  // Default shirt
   }
 }
 
-const getLegsEmoji = (look) => {
-  switch(look) {
-    case 'classic': return '🦵'  // Legs
-    case 'corporate': return '👠'  // Heels
-    case 'insta': return '👖'  // Jeans
-    case 'grandma': return '🧦'  // Socks/slippers
-    default: return '👟'  // Default shoes
+const getPersonalityEmoji = (disciplineStyle) => {
+  switch(disciplineStyle) {
+    case 'silent': return '🤫'  // Silent
+    case 'verbal': return '🗣️'  // Speaking
+    case 'lecture': return '📢'  // Megaphone
+    case 'physical': return '💪'  // Strong
+    default: return ''
   }
 }
 
@@ -85,25 +95,28 @@ const CharacterCreation = ({ character, setCharacter, onComplete }) => {
                     {/* Character Shadow */}
                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-black/20 rounded-full blur-sm"></div>
                     
-                    {/* Full Body Representation */}
+                    {/* Full Person Representation */}
                     <div className="relative">
-                      {/* Head */}
-                      <div className="text-6xl mb-2 transition-all duration-500">
-                        {character.look ? CHARACTER_OPTIONS.look.find(l => l.id === character.look)?.emoji : '❓'}
+                      {/* Main Person - Large central figure */}
+                      <div className="text-9xl mb-4 transition-all duration-500 relative z-10">
+                        {character.look ? getFullPersonEmoji(character.look) : '👤'}
                       </div>
                       
-                      {/* Body/Outfit based on character type */}
-                      <div className="text-8xl mb-2 transition-all duration-500">
-                        {getBodyEmoji(character.look)}
-                      </div>
-                      
-                      {/* Legs/Bottom */}
-                      <div className="text-4xl mb-2 transition-all duration-500">
-                        {getLegsEmoji(character.look)}
+                      {/* Character Accessories */}
+                      <div className="flex justify-center items-center space-x-4 mb-4">
+                        {/* Outfit/Style Indicator */}
+                        <div className="text-3xl transition-all duration-500">
+                          {character.look ? getOutfitEmoji(character.look) : ''}
+                        </div>
+                        
+                        {/* Personality Indicator */}
+                        <div className="text-3xl transition-all duration-500">
+                          {character.disciplineStyle ? getPersonalityEmoji(character.disciplineStyle) : ''}
+                        </div>
                       </div>
                       
                       {/* Weapon floating beside */}
-                      <div className="absolute top-4 -right-8 text-4xl animate-bounce">
+                      <div className="absolute top-8 -right-12 text-5xl animate-bounce">
                         {character.weapon ? CHARACTER_OPTIONS.weapon.find(w => w.id === character.weapon)?.emoji : ''}
                       </div>
                       
@@ -116,11 +129,18 @@ const CharacterCreation = ({ character, setCharacter, onComplete }) => {
                             character.disciplineStyle === 'lecture' ? 'bg-yellow-400' :
                             'bg-purple-400'
                           }`} style={{
-                            transform: 'scale(1.5)',
-                            filter: 'blur(20px)'
+                            transform: 'scale(2)',
+                            filter: 'blur(25px)'
                           }}></div>
                         </div>
                       )}
+                      
+                      {/* Character Name/Title */}
+                      <div className="text-center mt-2">
+                        <div className="text-sm font-bold text-white bg-black/50 rounded-full px-3 py-1 inline-block">
+                          {character.look ? CHARACTER_OPTIONS.look.find(l => l.id === character.look)?.name : 'Choose Your Look'}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
