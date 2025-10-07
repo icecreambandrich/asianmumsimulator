@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry'
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 import { createClothMaterial } from '../materials'
 
 interface TorsoProps {

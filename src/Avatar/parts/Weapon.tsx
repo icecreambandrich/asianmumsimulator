@@ -1,7 +1,7 @@
 import React, { useRef, useMemo } from 'react'
 import { Mesh, RingGeometry } from 'three'
 import { useFrame } from '@react-three/fiber'
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry'
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
 import { WEAPON_MATERIALS } from '../materials'
 import { Text } from '@react-three/drei'
 
